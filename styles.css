@@ -1,0 +1,360 @@
+/* =========================
+   BASE
+========================= */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: white;
+}
+
+/* =========================
+   HEADER
+========================= */
+.header {
+  background-color: #020617;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+}
+
+.header a {
+  height: 100%;
+}
+
+/* =========================
+   HERO
+========================= */
+.hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+
+  background: radial-gradient(circle at top, #1e293b, #020617 70%);
+}
+
+.hero-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 1100px;
+  width: 100%;
+  align-items: center;
+}
+
+/* Texto */
+.hero-left h2 {
+  font-size: 42px;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.hero-left p {
+  font-size: 16px;
+  color: #94a3b8;
+  margin-bottom: 24px;
+}
+
+/* Ações */
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-note {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+/* Imagem */
+.hero-right {
+  display: flex;
+  justify-content: center;
+}
+
+.hero-right img {
+  max-width: 250px;
+  border-radius: 12px;
+
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  transition: transform 0.4s;
+}
+
+.hero-right img:hover {
+  transform: scale(1.03);
+}
+
+/* =========================
+   FEATURES
+========================= */
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 60px 20px;
+}
+
+.feature {
+  background: linear-gradient(180deg, #020617, #0f172a);
+  padding: 20px;
+  border-radius: 12px;
+
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+  transition: all 0.3s;
+}
+
+.feature:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* =========================
+   CAROUSEL
+========================= */
+.carousel {
+  overflow: hidden;
+  padding: 40px;
+  background: linear-gradient(180deg, #020617, #0f172a);
+}
+
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  animation: scroll 15s linear infinite;
+}
+
+.carousel img {
+  border-radius: 10px;
+  max-width: 800px;
+}
+
+/* =========================
+   DIVIDER
+========================= */
+.sectionDivider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(to right, transparent, #334155, transparent);
+  opacity: 0.5;
+}
+
+/* =========================
+   BUTTON
+========================= */
+.btn-primary {
+  position: relative;
+  background: #2563eb;
+  padding: 10px 20px;
+  border-radius: 6px;
+  color: white;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+}
+
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.2), transparent);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.btn-primary:hover::after {
+  opacity: 1;
+}
+
+/* =========================
+   CTA
+========================= */
+.cta {
+  padding: 40px 10px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  background: radial-gradient(circle at center, #1e293b, #020617);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glow de fundo */
+.cta::before {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.2), transparent);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(100px);
+}
+
+.cta-content {
+  max-width: 600px;
+  position: relative;
+  z-index: 1;
+}
+
+.cta h2 {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.cta p {
+  color: #94a3b8;
+  margin-bottom: 24px;
+}
+
+.cta-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.cta-note {
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* =========================
+   ANIMAÇÕES
+========================= */
+.fadeUp {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s ease forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  /* =========================
+     HEADER
+  ========================= */
+  .header {
+    padding: 16px 20px;
+  }
+
+  /* =========================
+     HERO
+  ========================= */
+  .hero {
+    padding: 40px 20px;
+    min-height: auto;
+  }
+
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .hero-left h2 {
+    font-size: 28px;
+  }
+
+  .hero-left p {
+    font-size: 14px;
+    max-width: 320px;
+    margin: 0 auto 20px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .hero-actions .btn-primary {
+    text-align: center;
+  }
+
+  .hero-note {
+    font-size: 12px;
+  }
+
+  /* Imagem mais fluida */
+  .hero-right img {
+    max-width: 100%;
+    width: 100%;
+    max-height: 220px;
+    object-fit: cover;
+  }
+
+  .hero-right img {
+    content: url("./imgs/simulados-white.png");
+  }
+
+  /* =========================
+     FEATURES
+  ========================= */
+  .features {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 40px 20px;
+    gap: 16px;
+  }
+
+  .feature {
+    text-align: center;
+  }
+
+  /* =========================
+     CAROUSEL
+  ========================= */
+  .carousel {
+    padding: 20px;
+  }
+
+  .carousel-track {
+    gap: 12px;
+  }
+
+  .carousel img {
+    max-width: 280px;
+    width: 100%;
+    height: auto;
+  }
+
+  /* =========================
+     CTA
+  ========================= */
+  .cta {
+    padding: 40px 20px;
+  }
+
+  .cta h2 {
+    font-size: 24px;
+  }
+
+  .cta p {
+    font-size: 14px;
+  }
+}
