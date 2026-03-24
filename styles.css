@@ -115,23 +115,82 @@ body {
 }
 
 /* =========================
-   CAROUSEL
+   CAROUSEL CONTAINER
 ========================= */
 .carousel {
+  position: relative;
   overflow: hidden;
-  padding: 40px;
+  padding: 50px 0;
+
   background: linear-gradient(180deg, #020617, #0f172a);
 }
 
-.carousel-track {
-  display: flex;
-  gap: 20px;
-  animation: scroll 15s linear infinite;
+/* =========================
+   FADE NAS LATERAIS (EFEITO PRO)
+========================= */
+.carousel::before,
+.carousel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 120px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
 }
 
+.carousel::before {
+  left: 0;
+  background: linear-gradient(to right, #020617, transparent);
+}
+
+.carousel::after {
+  right: 0;
+  background: linear-gradient(to left, #020617, transparent);
+}
+
+/* =========================
+   TRACK
+========================= */
+.carousel-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+
+  animation: scroll 30s linear infinite;
+  will-change: transform;
+}
+
+/* pausa no hover */
+.carousel:hover .carousel-track {
+  animation-play-state: paused;
+}
+
+/* =========================
+   IMAGENS
+========================= */
 .carousel img {
-  border-radius: 10px;
-  max-width: 800px;
+  width: 800px;
+  object-fit: cover;
+
+  border-radius: 14px;
+
+  flex-shrink: 0;
+
+  /* visual premium */
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.4),
+    0 0 0 1px rgba(255,255,255,0.04);
+
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* hover suave */
+.carousel img:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow:
+    0 20px 50px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(255,255,255,0.08);
 }
 
 /* =========================
@@ -302,15 +361,16 @@ body {
 
   /* Imagem mais fluida */
   .hero-right img {
-    max-width: 100%;
+    /* max-width: 100%;
     width: 100%;
     max-height: 220px;
-    object-fit: cover;
+    object-fit: cover; */
+    display: none;
   }
 
-  .hero-right img {
+  /* .hero-right img {
     content: url("./imgs/simulados-white.png");
-  }
+  } */
 
   /* =========================
      FEATURES
@@ -330,11 +390,12 @@ body {
      CAROUSEL
   ========================= */
   .carousel {
-    padding: 20px;
+    padding: 20px 0;
   }
 
-  .carousel-track {
-    gap: 12px;
+  .carousel::before,
+  .carousel::after {
+    width: 60px;
   }
 
   .carousel img {
